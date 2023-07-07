@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "reclamation-project",
+  "private_key_id": "70ca1b2a52cb3745af403f63ce41ba22415be320",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCzW8xceSaLidq/\n606/dRD0lE4QiZorpuxrx0p2vaeUfQpQQ43eP1cGnBQ5Ipd6++fwoVgR/zUd6KPN\noOTe/cQr3vuOzqpE37qHKQn0ZvKQWu+IEUKUbyrYWRcxVYu2oHx5VjNqbA7Hr2+3\nbo73VDgVr7KL7PummEXChoKoCCHll5VnSp3UQNpVOWOHdl8jxZGJTTu20ziGupQX\nQ7iKBS0yGRLx6YHwKpPlBLw+lq7mIKA6tDcZ2XDZgKAxfejz4WuaEokQYtNawwTn\nhKBW5Qb2G9xj2T9rPUjrr4KPNmlmAONWdfOwCaF6JNk5h/+smhhajfPE2JTcm9I8\nsDOu2VOFAgMBAAECggEAD/xuXE6jCBxfHix5rhhfzMDcLV6qWlosJ9YRNcClK1ey\nv+Eph6XTGqB2L/p8kGZb76ddy2rY/+Owl98Pjy2Emtlqx/l1FSLww+O9QqabV5D3\nWQQa0FKROcvFBK1ogLxQo9ryRbnAXn1tQmbtAK/luM8aZZzXeCuJyjMFebcR2F3y\nXy/XVNCA+rbhmG0D4ZenNH46ZTHZ78t/mO8z6wmu/J4H1knRF7rWn7TDpcjIBTIE\nDtpmzoqIeUDNedQwiCi+AyRzYymZ+GSgZG46ajvwyYEB0eg0yHoPO4aZNdncCLHw\nA1kSPRyxDrvFYTVsqNTxdC2W97kYBfW2hr7t/8lxQQKBgQDiD3Fu4pbfAymPtJS8\nDz+W/YhdE3axbYfuMYrLpK5eFqujeIl9aPfCHlVCKOjDlpQ61bDM6KUZCPy7rT95\nafJC9YuvI/kpP15cfnAelqFU/7dE61R0TNDlUQllWo2G87t9ufjzU/Njo5f/gpSY\n0C1sVyqd0YY8PYhkiQsGSwTWRQKBgQDLHO/DmISHwI3K2QuLGj29ch9lzTc0NKWZ\nF5KP3TdAx3pBsdEHYr/Ck9GtwPHIHonEL34Imsn0Rcg3+lZe9Qti5I76z2OqWSl6\n3I6UpEx1oIveIiWjaksjQKMfoRrLQojbuK/Qaq8fN8DbNKRd8S7EC+6nKGGvflw2\nqzMb2Zf8QQKBgQCfK6KCIfd7JV3hOpQzakUrCm82ohrDyUyZsbZ5twWzaCEIZDni\n3ML+op8Di4yBEwhh+M6ZKQH+g654cv8rfSbAcOYetqScn2rQk5JcZ1FHaRpg45Y+\noUvA+3MzMzRNnlYYq5aXtje8o5bFqOr6QjKJg0KVhs8OoYDk0P27O503RQKBgGsT\nHR6655r9GoLGOvyg381gPUcYkTKXUnlLYPswfnFK95tsVyqSl07HSHFV1uBNoQjo\nlIOKvk5k/zDrat7yRYdjwDBeZkcma+SWIyAfISOdeD6pN7hXT7cM2zHQZ2Sh9a4H\nRcAUja9iX+vva3sOqz20oKJEeoLelVRImk/jPOlBAoGBALnyiJ46/ry2W2EP81r9\n9TGmgUXhoNNuXM/fdfxwoIoQpge1lUjDM6Wvo1UFBdxRSnD6QTqghOw1fPmLAKsV\nb742no2RFi5tefAIVqC+y7R4v+F/Rc/XRJDndIQ+7RsSr6ZStpuzV8nmnI2RXA94\nQo+6xn3/jIukfSCQXyXDTvuZ\n-----END PRIVATE KEY-----\n",
+  "client_email": "reclamation-account@reclamation-project.iam.gserviceaccount.com",
+  "client_id": "110012689035394727515",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/reclamation-account%40reclamation-project.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
