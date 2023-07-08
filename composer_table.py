@@ -12,14 +12,26 @@ def get_clients():
         if not(data[i] == ''):
             clients.append(data[i])
     return clients
-    # return data
-
-print(get_clients())
-# get_clients()
-
-
-# values_list = worksheet.row_values(1)
 
 def get_info(client):
-    data = get_clients().index(client)
+
+    number_str_client = worksheet.find(client).row
+    diapazon = f"A{number_str_client}:U{number_str_client}"
+
+    titles = worksheet.row_values(2)
+    data_client = []
+    # data_client = worksheet.row_values(number_str_client)
+
+    values_client = worksheet.range(diapazon)
+
+    for cell in values_client:
+        data_client.append(cell.value)
+
+
+
+    data = titles, data_client
+
     return data
+
+# print(get_info("dfghdf"))
+print("Работаем!")
