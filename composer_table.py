@@ -33,5 +33,14 @@ def get_info(client):
 
     return data
 
+
 # print(get_info("dfghdf"))
+
+def find_client(name):
+
+    if worksheet.find(name):
+        return 1
+    else:
+        return 0
+
 print("Работаем!")

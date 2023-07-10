@@ -7,42 +7,42 @@ import time
 
 bot = telebot.TeleBot('6316626333:AAEyLAeyYKQzsvqSl7ggLYOQ1zSaou_K6hA');
 
-@bot.message_handler(commands=['start'])
-def handle_start(message):
-    hello_text = "☀️Добрый день!  ☀️\n\nЯ помогаю следить за рекламацией в компании <b>Bazis Telecom</b>!\n\nМне понятны только команды, а также я реагирую на нажатие кнопок.\n\nНапишите /help для вывода более подробной информации о командах."
-    remove_keyboard = types.ReplyKeyboardRemove()
-    bot.send_message(message.from_user.id, hello_text, parse_mode="html",reply_markup=remove_keyboard)
+@bot.message_handler(commands=['start', 'help', 'support', 'getinfo', 'tips'])
+def handle_output(message):
+    if message.text == "/start":
+        hello_text = "☀️Добрый день!☀️\n\nЯ помогаю следить за рекламацией в компании <b>Bazis Telecom</b>!\n\nМне понятны только команды, а также я реагирую на нажатие кнопок.\n\nНажмите на 👉 /help для вывода более подробной информации о командах."
+        remove_keyboard = types.ReplyKeyboardRemove()
+        bot.send_message(message.from_user.id, hello_text, parse_mode="html", reply_markup=remove_keyboard)
+    elif message.text == "/help":
+        remove_keyboard = types.ReplyKeyboardRemove()
+        bot.send_message(message.from_user.id, "<b>Вам доступны следующие команды:</b>\n\n 👤 /getinfo - Показать информацию о клиенте\n 👽/tips - Полезные советы по пользованию ботом\n 🆘 /support - Нашли ошибку? Сообщите, пожалуйста, поддержке!", parse_mode="html", reply_markup=remove_keyboard)
+    elif message.text == "/support":
+        remove_keyboard = types.ReplyKeyboardRemove()
+        bot.send_message(message.from_user.id,"Если вы обнаружили ошибку в работе бота, напишите @Barbarian_dm. Так же можете предлагать свои варианты по улучшению функционала!", reply_markup=remove_keyboard)
+    elif message.text == "/getinfo":
+        clients = composer_table.get_clients()
+        string = "<b>📌Имена клиентов:📌</b> \n\n"
+        number = 1
+        keyboard = types.ReplyKeyboardMarkup(row_width=1)
+        for i in range(0, len(clients), 1):
+            unit = f"{number}. <a href='/command_help'>{clients[i]}</a> \n\n"
+            string += unit
+            keyboard.add(types.KeyboardButton(f"{clients[i]}"))
+            number += 1
 
-@bot.message_handler(commands=['help'])
-def handle_start(message):
-    remove_keyboard = types.ReplyKeyboardRemove()
-    bot.send_message(message.from_user.id, "<b>Вам доступны следующие команды:</b>\n\n 👤 /getinfo - Показать информацию о клиенте\n 🆘 /support - Нашли ошибку? Сообщите, пожалуйста, поддержке!", parse_mode="html", reply_markup=remove_keyboard)
-
-@bot.message_handler(commands=['support'])
-def handle_start(message):
-    bot.send_message(message.from_user.id, "Если вы обнаружили ошибку в работе бота, напишите @Barbarian_dm. Так же можете предлагать свои варианты по улучшению функционала!")
-
-@bot.message_handler(commands=['getinfo'])
-def handle_start(message):
-
-    clients = composer_table.get_clients()
-    string = "<b>📌Имена клиентов:📌</b> \n\n"
-    number = 1
-    keyboard = types.ReplyKeyboardMarkup(row_width=1)
-    for i in range(0, len(clients), 1):
-        unit = f"{number}. <a href='/command_help'>{clients[i]}</a> \n\n"
-        string += unit
-        keyboard.add(types.KeyboardButton(f"{clients[i]}"))
-        number += 1
-        
-    bot.send_message(message.from_user.id, string + "Для вывода <b>подробной информации</b> по рекламации клиента <b>нажмите на кнопку с соответсвующим именем</b>.", parse_mode="html", reply_markup=keyboard)
-    bot.register_next_step_handler(message, handle_input)
+        bot.send_message(message.from_user.id,
+                         string + "Для вывода <b>подробной информации</b> по рекламации клиента <b>нажмите на кнопку с соответсвующим именем</b>.",
+                         parse_mode="html", reply_markup=keyboard)
+        bot.register_next_step_handler(message, handle_input)
+    elif message.text == "/tips":
+        tips = "💥<b>Полезные советы</b>💥\n\n1. Вместо того чтобы вписывать команды самостоятельно, вы можете нажать на интересующую команду, если увидите её в тексте. Она выполнится автоматически.\n2. Вы можете выбирать команды в <b>меню</b>, а также нажимать на появляющиеся под клавиатурой кнопки для выбора каких-либо дополнительных параметров в зависимости от команды.\n\n⏳ Количество полезных советов скоро вырастет :)"
+        bot.send_message(message.from_user.id, tips, parse_mode='html')
 
 def handle_input(message):
 
     chat_id = message.chat.id
 
-    if not(message.text.startswith('/')):
+    if composer_table.find_client(message.text):
         input = f"⏳Получение информации о клиенте <b>{message.text}</b>... \n"
         message_while = bot.send_message(message.from_user.id, input, parse_mode="html").message_id
 
@@ -59,19 +59,18 @@ def handle_input(message):
                 unit = f"<b>❗{data[0][i]}: </b> <i>не заполнено</i>\n\n"
                 stringuxa += unit
 
-        # keyboard = types.ReplyKeyboardMarkup(row_width=1)
-        # keyboard.row()
-        # btn1 = types.KeyboardButton("/getclients")
-        # btn2 = types.KeyboardButton("/help")
-        # keyboard.add(btn1, btn2)
-
         bot.send_message(message.from_user.id, stringuxa, parse_mode="html")
         bot.delete_message(chat_id, message_while)
         bot.register_next_step_handler(message, handle_input)
+    elif message.text.startswith('/'):
+        handle_output(message)
     else:
-        bot.send_message(message.from_user.id, "⛔ Упс! Клиента с таким именем не найдено. Выполните команду /getinfo ещё раз или просмотрите список всех команд с помощью /help.", parse_mode="html")
-
-
+        remove_keyboard = types.ReplyKeyboardRemove()
+        bot.send_message(message.from_user.id, f"⛔ Упс! Клиента с таким именем не найдено. Выполните команду /getinfo ещё раз и нажмите на кнопку с интересующим клиентом.", parse_mode="html", reply_markup=remove_keyboard)
+@bot.message_handler(content_types=['text'])
+def handle_text(message):
+    remove_keyboard = types.ReplyKeyboardRemove()
+    bot.send_message(message.from_user.id, "⚠ Мне понятны только команды, а также я реагирую на нажатие кнопок.\n\nНажмите на 👉 /help для вывода более подробной информации о командах.", reply_markup=remove_keyboard)
 
 
 
