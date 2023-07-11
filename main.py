@@ -15,7 +15,7 @@ def handle_output(message):
         bot.send_message(message.from_user.id, hello_text, parse_mode="html", reply_markup=remove_keyboard)
     elif message.text == "/help":
         remove_keyboard = types.ReplyKeyboardRemove()
-        bot.send_message(message.from_user.id, "<b>Вам доступны следующие команды:</b>\n\n 👤 /getinfo - Показать информацию о клиенте\n 👽/tips - Полезные советы по пользованию ботом\n 🆘 /support - Нашли ошибку? Сообщите, пожалуйста, поддержке!", parse_mode="html", reply_markup=remove_keyboard)
+        bot.send_message(message.from_user.id, "<b>Вам доступны следующие команды:</b>\n\n 👤 /getinfo - Показать информацию о клиенте\n 👽 /tips - Полезные советы по пользованию ботом\n 🆘 /support - Нашли ошибку? Сообщите, пожалуйста, поддержке!", parse_mode="html", reply_markup=remove_keyboard)
     elif message.text == "/support":
         remove_keyboard = types.ReplyKeyboardRemove()
         bot.send_message(message.from_user.id,"Если вы обнаружили ошибку в работе бота, напишите @Barbarian_dm. Так же можете предлагать свои варианты по улучшению функционала!", reply_markup=remove_keyboard)
@@ -31,7 +31,7 @@ def handle_output(message):
             number += 1
 
         bot.send_message(message.from_user.id,
-                         string + "Для вывода <b>подробной информации</b> по рекламации клиента <b>нажмите на кнопку с соответсвующим именем</b>.",
+                         string + "Для вывода <b>подробной информации</b> по рекламации клиента <b>нажмите на кнопку с соответсвующим именем 👇</b>",
                          parse_mode="html", reply_markup=keyboard)
         bot.register_next_step_handler(message, handle_input)
     elif message.text == "/tips":
