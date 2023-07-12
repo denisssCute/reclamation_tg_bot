@@ -10,4 +10,4 @@ data = db.fetchall()
 
 print(data)
 
-connect.close
+connect.close()
