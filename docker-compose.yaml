@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+
+  python:
+    build:
+      context: "./Docker/python"
+
+  mysql:
+    image: mysql:8
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - "./Docker/volumes/mysql:/var/lib/mysql"

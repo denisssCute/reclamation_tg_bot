@@ -5,7 +5,11 @@ from composer_table import *
 
 import time
 
-bot = telebot.TeleBot('6316626333:AAEyLAeyYKQzsvqSl7ggLYOQ1zSaou_K6hA');
+# Основной бот
+# bot = telebot.TeleBot('6316626333:AAEyLAeyYKQzsvqSl7ggLYOQ1zSaou_K6hA');
+
+# Резервный бот
+bot = telebot.TeleBot('5932725163:AAG0JIVZ86rq70k2mSjcx2Yg810J0oYKNfE');
 
 @bot.message_handler(commands=['start', 'help', 'support', 'getinfo', 'tips'])
 def handle_output(message):
@@ -67,10 +71,10 @@ def handle_input(message):
     else:
         remove_keyboard = types.ReplyKeyboardRemove()
         bot.send_message(message.from_user.id, f"⛔ Упс! Клиента с таким именем не найдено. Выполните команду /getinfo ещё раз и нажмите на кнопку с интересующим клиентом.", parse_mode="html", reply_markup=remove_keyboard)
-@bot.message_handler(content_types=['text'])
-def handle_text(message):
-    remove_keyboard = types.ReplyKeyboardRemove()
-    bot.send_message(message.from_user.id, "⚠ Мне понятны только команды, а также я реагирую на нажатие кнопок.\n\nНажмите на 👉 /help для вывода более подробной информации о командах.", reply_markup=remove_keyboard)
+# @bot.message_handler(content_types=['text'])
+# def handle_text(message):
+#     remove_keyboard = types.ReplyKeyboardRemove()
+#     bot.send_message(message.from_user.id, "⚠ Мне понятны только команды, а также я реагирую на нажатие кнопок.\n\nНажмите на 👉 /help для вывода более подробной информации о командах.", reply_markup=remove_keyboard)
 
 
 
