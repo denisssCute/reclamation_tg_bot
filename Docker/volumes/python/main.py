@@ -1,10 +1,6 @@
 import telebot
 from telebot import types
-import src.python.composer_table as composer_table
-from src.python.composer_table import *
-
-import time
-
+import composer_table
 # Основной бот
 # bot = telebot.TeleBot('6316626333:AAEyLAeyYKQzsvqSl7ggLYOQ1zSaou_K6hA');
 
@@ -48,7 +44,7 @@ def handle_input(message):
 
     if composer_table.find_client(message.text):
         input = f"⏳Получение информации о клиенте <b>{message.text}</b>... \n"
-        message_while = bot.send_message(message.from_user.id, input, parse_mode="html").message_id
+        message_while = bot.send_message(message.from_user.id, input, parse_mode="html")
 
         smile = ["👤", "","","","📝","📅","","","","","","","","","","","","","","","",""]
         stringuxa = ""
@@ -64,17 +60,17 @@ def handle_input(message):
                 stringuxa += unit
 
         bot.send_message(message.from_user.id, stringuxa, parse_mode="html")
-        bot.delete_message(chat_id, message_while)
+        bot.delete_message(chat_id, message_while.message_id)
         bot.register_next_step_handler(message, handle_input)
     elif message.text.startswith('/'):
         handle_output(message)
     else:
         remove_keyboard = types.ReplyKeyboardRemove()
         bot.send_message(message.from_user.id, f"⛔ Упс! Клиента с таким именем не найдено. Выполните команду /getinfo ещё раз и нажмите на кнопку с интересующим клиентом.", parse_mode="html", reply_markup=remove_keyboard)
-# @bot.message_handler(content_types=['text'])
-# def handle_text(message):
-#     remove_keyboard = types.ReplyKeyboardRemove()
-#     bot.send_message(message.from_user.id, "⚠ Мне понятны только команды, а также я реагирую на нажатие кнопок.\n\nНажмите на 👉 /help для вывода более подробной информации о командах.", reply_markup=remove_keyboard)
+@bot.message_handler(content_types=['text'])
+def handle_text(message):
+    remove_keyboard = types.ReplyKeyboardRemove()
+    bot.send_message(message.from_user.id, "⚠ Мне понятны только команды, а также я реагирую на нажатие кнопок.\n\nНажмите на 👉 /help для вывода более подробной информации о командах.", reply_markup=remove_keyboard)
 
 
 
