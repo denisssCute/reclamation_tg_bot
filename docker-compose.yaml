@@ -5,6 +5,10 @@ services:
   python:
     build:
       context: "./Docker/python"
+    ports:
+      -80:80
+    volumes:
+      -./src/python:/etc
 
   mysql:
     image: mysql:8
