@@ -1,7 +1,7 @@
 import telebot
 from telebot import types
-import composer_table
-from composer_table import *
+import src.python.composer_table as composer_table
+from src.python.composer_table import *
 
 import time
 
